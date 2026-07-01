@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<title>Roads</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="layout">
+
+
+<div class="sidebar">
+
+<h2>🚧 Road System</h2>
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+<a href="roads.html">
+Roads
+</a>
+
+<a href="reports.html">
+Reports
+</a>
+
+<a href="index.html">
+Logout
+</a>
+
+
+</div>
+
+
+
+
+<div class="main">
+
+
+<h1>
+Road Management
+</h1>
+
+
+
+<div class="actions">
+
+
+<input
+type="text"
+id="search"
+placeholder="Search road..."
+onkeyup="searchRoad()">
+
+
+
+<button onclick="openForm()">
++ Add Road
+</button>
+
+
+</div>
+
+
+
+
+<table id="roadsTable">
+
+
+<tr>
+
+<th>Road No</th>
+<th>Name</th>
+<th>Type</th>
+<th>Length KM</th>
+<th>Status</th>
+
+</tr>
+
+
+<tr>
+
+<td>101</td>
+<td>Riyadh Highway</td>
+<td>Express</td>
+<td>120</td>
+<td class="good">
+Good
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>205</td>
+<td>North Road</td>
+<td>Double</td>
+<td>80</td>
+<td class="bad">
+Repair
+</td>
+
+</tr>
+
+
+</table>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- Popup -->
+
+
+<div id="roadForm" class="modal">
+
+
+<div class="modal-box">
+
+
+<h2>
+Add Road
+</h2>
+
+
+<input id="roadNo"
+placeholder="Road Number">
+
+
+
+<input id="roadName"
+placeholder="Road Name">
+
+
+
+<input id="length"
+placeholder="Length KM">
+
+
+
+<button onclick="addRoad()">
+Save
+</button>
+
+
+
+<button onclick="closeForm()">
+Cancel
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>
