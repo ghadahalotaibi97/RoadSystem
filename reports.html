@@ -1,1 +1,290 @@
+<!DOCTYPE html>
 
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Reports</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+
+<body>
+
+
+<div class="layout">
+
+
+
+<div class="sidebar">
+
+
+<h2>🚧 Road System</h2>
+
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+
+<a href="roads.html">
+Roads
+</a>
+
+
+<a href="reports.html">
+Reports
+</a>
+
+
+<a href="index.html">
+Logout
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="main">
+
+
+<h1>
+Road Reports
+</h1>
+
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+Good Roads
+</h3>
+
+<p class="good">
+72%
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Fair Roads
+</h3>
+
+<p>
+18%
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+Poor Roads
+</h3>
+
+<p class="bad">
+10%
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="table-box">
+
+
+<h2>
+Condition Summary
+</h2>
+
+
+<table>
+
+
+<tr>
+
+<th>Road Type</th>
+<th>Total</th>
+<th>Average PCR</th>
+<th>Status</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+Express
+</td>
+
+<td>
+80
+</td>
+
+<td>
+88%
+</td>
+
+<td class="good">
+Good
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Double
+</td>
+
+<td>
+120
+</td>
+
+<td>
+75%
+</td>
+
+<td>
+Fair
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Single
+</td>
+
+<td>
+50
+</td>
+
+<td>
+55%
+</td>
+
+<td class="bad">
+Poor
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+<div class="table-box">
+
+
+<h2>
+Condition Chart
+</h2>
+
+
+<canvas id="roadChart"></canvas>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+new Chart(
+document.getElementById("roadChart"),
+{
+
+
+type:'doughnut',
+
+
+data:{
+
+
+labels:[
+"Good",
+"Fair",
+"Poor"
+],
+
+
+datasets:[{
+
+
+data:[
+72,
+18,
+10
+]
+
+
+}]
+
+}
+
+
+});
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>
