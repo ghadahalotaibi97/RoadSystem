@@ -7,79 +7,130 @@ VALUES
 INSERT INTO ROADS
 (ROAD_NO,ROAD_NAME,ROAD_TYPE,LENGTH_KM)
 VALUES
-('101',
+('101',INSERT INTO users (
+    username,
+    password,
+    role
+) VALUES ( 'admin',
+           '1234',
+           'ADMIN' );
+
+INSERT INTO roads (
+    road_no,
+    road_name,
+    road_type,
+    length_km
+) VALUES ( '101',
+           'Riyadh Highway',
+           'Express',
+           120 );
+
+INSERT INTO roads (
+    road_no,
+    road_name,
+    road_type,
+    length_km
+) VALUES ( '205',
+           'North Road',
+           'Double',
+           80 );
+
+INSERT INTO roads (
+    road_no,
+    road_name,
+    road_type,
+    length_km
+) VALUES ( '310',
+           'East Road',
+           'Single',
+           45 );
+
+INSERT INTO survey (
+    road_id,
+    survey_date,
+    pcr,
+    iri,
+    rut,
+    crack
+) VALUES ( 1,
+           sysdate,
+           90,
+           2.1,
+           1.5,
+           5 );
+
+INSERT INTO survey (
+    road_id,
+    survey_date,
+    pcr,
+    iri,
+    rut,
+    crack
+) VALUES ( 2,
+           sysdate,
+           60,
+           4.8,
+           5,
+           20 );
+
+SELECT
+    r.road_no,
+    r.road_name,
+    s.pcr,
+    s.iri,
+    s.rut
+FROM
+         roads r
+    JOIN survey s ON r.road_id = s.road_id;
 'Riyadh Highway',
 'Express',
 120);
 
 
-INSERT INTO ROADS
-(ROAD_NO,ROAD_NAME,ROAD_TYPE,LENGTH_KM)
-VALUES
-('205',
-'North Road',
-'Double',
-80);
+INSERT INTO roads (
+    road_no,
+    road_name,
+    road_type,
+    length_km
+) VALUES ( '205',
+           'North Road',
+           'Double',
+           80 );
 
+INSERT INTO roads (
+    road_no,
+    road_name,
+    road_type,
+    length_km
+) VALUES ( '310',
+           'East Road',
+           'Single',
+           45 );
 
-INSERT INTO ROADS
-(ROAD_NO,ROAD_NAME,ROAD_TYPE,LENGTH_KM)
-VALUES
-('310',
-'East Road',
-'Single',
-45);
+INSERT INTO survey (
+    road_id,
+    survey_date,
+    pcr,
+    iri,
+    rut,
+    crack
+) VALUES ( 1,
+           sysdate,
+           90,
+           2.1,
+           1.5,
+           5 );
 
-
-INSERT INTO SURVEY
-(
-ROAD_ID,
-SURVEY_DATE,
-PCR,
-IRI,
-RUT,
-CRACK
-)
-
-VALUES
-(
-1,
-SYSDATE,
-90,
-2.1,
-1.5,
-5
-);
-
-
-
-INSERT INTO SURVEY
-(
-ROAD_ID,
-SURVEY_DATE,
-PCR,
-IRI,
-RUT,
-CRACK
-)
-
-VALUES
-(
-2,
-SYSDATE,
-60,
-4.8,
-5,
-20
-);
-
-SELECT
-r.ROAD_NO,
-r.ROAD_NAME,
-s.PCR,
-s.IRI,
-s.RUT
-
-FROM ROADS r
-JOIN SURVEY s
-ON r.ROAD_ID=s.ROAD_ID;
+INSERT INTO survey (
+    road_id,
+    survey_date,
+    pcr,
+    iri,
+    rut,
+    crack
+) VALUES ( 2,
+           sysdate,
+           60,
+           4.8,
+           5,
+           20 );
