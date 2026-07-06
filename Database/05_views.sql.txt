@@ -1,31 +1,12 @@
-CREATE OR REPLACE VIEW ROAD_REPORT
-AS
-
-SELECT
-
-r.ROAD_NO,
-
-r.ROAD_NAME,
-
-r.ROAD_TYPE,
-
-s.PCR,
-
-s.IRI,
-
-s.RUT,
-
-GET_ROAD_STATUS
-(
-s.PCR,
-s.IRI,
-s.RUT,
-s.CRACK
-) STATUS
-
-
-FROM ROADS r
-
-JOIN SURVEY s
-
-ON r.ROAD_ID=s.ROAD_ID;
+CREATE OR REPLACE VIEW road_report AS
+    SELECT
+        r.road_no,
+        r.road_name,
+        r.road_type,
+        s.pcr,
+        s.iri,
+        s.rut,
+        get_road_status(s.pcr, s.iri, s.rut, s.crack) status
+    FROM
+             roads r
+        JOIN survey s ON r.road_id = s.road_id;
