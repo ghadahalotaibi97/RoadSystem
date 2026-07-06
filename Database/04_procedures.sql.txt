@@ -1,81 +1,38 @@
-CREATE OR REPLACE PROCEDURE ADD_SURVEY
-(
-P_ROAD_ID NUMBER,
-P_PCR NUMBER,
-P_IRI NUMBER,
-P_RUT NUMBER,
-P_CRACK NUMBER
-)
-
-IS
-
-V_STATUS VARCHAR2(20);
-
-
+CREATE OR REPLACE PROCEDURE add_survey (
+    p_road_id NUMBER,
+    p_pcr     NUMBER,
+    p_iri     NUMBER,
+    p_rut     NUMBER,
+    p_crack   NUMBER
+) IS
+    v_status VARCHAR2(20);
 BEGIN
+    INSERT INTO survey (
+        road_id,
+        survey_date,
+        pcr,
+        iri,
+        rut,
+        crack
+    ) VALUES ( p_road_id,
+               sysdate,
+               p_pcr,
+               p_iri,
+               p_rut,
+               p_crack );
 
+    v_status := get_road_status(p_pcr, p_iri, p_rut, p_crack);
+    INSERT INTO road_status (
+        road_id,
+        status
+    ) VALUES ( p_road_id,
+               v_status );
 
-INSERT INTO SURVEY
-(
-ROAD_ID,
-SURVEY_DATE,
-PCR,
-IRI,
-RUT,
-CRACK
-)
-
-VALUES
-(
-P_ROAD_ID,
-SYSDATE,
-P_PCR,
-P_IRI,
-P_RUT,
-P_CRACK
-);
-
-
-
-V_STATUS :=
-GET_ROAD_STATUS
-(
-P_PCR,
-P_IRI,
-P_RUT,
-P_CRACK
-);
-
-
-
-INSERT INTO ROAD_STATUS
-(
-ROAD_ID,
-STATUS
-)
-
-VALUES
-(
-P_ROAD_ID,
-V_STATUS
-);
-
-
-COMMIT;
-
-
+    COMMIT;
 END;
 /
+
 BEGIN
-
-ADD_SURVEY
-(
-1,
-85,
-2,
-2,
-6
-);
-
+    add_survey(1, 85, 2, 2, 6);
 END;
 /
