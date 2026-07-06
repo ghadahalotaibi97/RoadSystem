@@ -1,57 +1,29 @@
-CREATE OR REPLACE FUNCTION GET_ROAD_STATUS
-(
-P_PCR NUMBER,
-P_IRI NUMBER,
-P_RUT NUMBER,
-P_CRACK NUMBER
-)
-
-RETURN VARCHAR2
-
-IS
-
-V_STATUS VARCHAR2(20);
-
+CREATE OR REPLACE FUNCTION get_road_status (
+    p_pcr   NUMBER,
+    p_iri   NUMBER,
+    p_rut   NUMBER,
+    p_crack NUMBER
+) RETURN VARCHAR2 IS
+    v_status VARCHAR2(20);
 BEGIN
+    IF
+        p_pcr >= 80
+        AND p_iri <= 3
+        AND p_rut <= 3
+        AND p_crack <= 10
+    THEN
+        v_status := 'GOOD';
+    ELSIF p_pcr >= 60 THEN
+        v_status := 'FAIR';
+    ELSE
+        v_status := 'POOR';
+    END IF;
 
-
-IF P_PCR >= 80
-AND P_IRI <= 3
-AND P_RUT <= 3
-AND P_CRACK <= 10
-THEN
-
-V_STATUS := 'GOOD';
-
-
-ELSIF P_PCR >= 60
-THEN
-
-V_STATUS := 'FAIR';
-
-
-ELSE
-
-V_STATUS := 'POOR';
-
-
-END IF;
-
-
-
-RETURN V_STATUS;
-
-
+    RETURN v_status;
 END;
 /
-SELECT
-GET_ROAD_STATUS
-(
-90,
-2.1,
-1.5,
-5
-)
-AS STATUS
 
-FROM DUAL;
+SELECT
+    get_road_status(90, 2.1, 1.5, 5) AS status
+FROM
+    dual;
