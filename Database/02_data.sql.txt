@@ -13,7 +13,7 @@ VALUES
     role
 ) VALUES ( 'admin',
            '1234',
-           'ADMIN' );
+           'ADMIN' ); 
 
 INSERT INTO roads (
     road_no,
